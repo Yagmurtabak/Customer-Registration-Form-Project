@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customers Detail</title>
+</head>
+<body>
+<h1>{{ yazı.Name }}</h1>
+
+<h2>{{ yazı.Surname }}</h2>
+
+<h3>{{ yazı.TC }}</h3>
+
+<h4>{{ yazı.City }}</h4>
+
+<h5>{{ yazı.District }}</h5>
+
+<h6>{{ yazı.Telephone }}</h6>
+<br>
+
+<a href="/post/update/{{ yazı.id}}"><button>Update</button></a> 
+<a href="/post/delete/{{ yazı.id}}"><button>Delete</button></a>
+
+<br><br>
+
+<a href="/post">Return</a>
+
+</body>
+</html>
