@@ -9,17 +9,12 @@
 <body>
  <h1>New Registration</h1>
 
- <form action="post/formdoldur" method="GET">
-     Name: <input name="isim" type="text"><br> <br>
-     Surname: <input name="soyisim" type="text"><br> <br>
-     TC : <input name="kimlikno" type="text"><br> <br>
-     City: <input name="sehir" type="text"><br> <br>
-     District:<input name="ilce" type="text"><br> <br>
-     Telephone:<input name="numara" type="text">
-
-
-     <br><br>
-     <input type="submit">
+ <form action="/post/formdoldur" method="GET">
+   
+    {{ form.as_p }}
+ 
+    
+    <input type="submit">
  </form>
 
 </body>

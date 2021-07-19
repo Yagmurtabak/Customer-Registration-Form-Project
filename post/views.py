@@ -1,30 +1,48 @@
 
+from django import forms
+from django.core import paginator
 from django.shortcuts import render,HttpResponse,HttpResponseRedirect
 from .models import yazı
+from .forms import CreateForms
+from django.core.paginator import EmptyPage, Page,PageNotAnInteger,Paginator
+from django.db.models import Q
 
 # Create your views here.
 
 def postlist_view(request):
-    allcustomers = yazı.objects.all()
+    word = request.GET.get("word")
+    if word:
+        customers_list=yazı.objects.filter(
+            Q(Name__contains=word),
+            Q(Surname__contains=word),
+            Q(TC__contains=word),
+            Q(City__contains=word),
+            Q(District__contains=word),
+            Q(Telephone__contains=word)
+        ).distinct()
+    else:
+        customers_list = yazı.objects.all()    
+    paginator = Paginator(customers_list,5)
+
+    page = request.GET.get('page')
+    allcustomers = paginator.get_page(page)
+
     return render(request, "list.html",{"allcustomers": allcustomers})
+
 
 def postdetail_view(request,id):
     yazıNesne = yazı.objects.get(id=id)
     return render(request, "detail.html",{ "yazı": yazıNesne})
 
 def postcreate_view(request):
-    page = "NewRegistration"
-    return render(request, "create.html", {"page": page})
+    form = CreateForms()
+    return render(request, "create.html", {"form": form})
 
 def formdoldur_view(request):
-    isim = request.GET.get("isim")
-    soyisim = request.GET.get("soyisim")
-    kimlikno = request.GET.get("kimlikno")
-    sehir = request.GET.get("sehir")
-    ilce = request.GET.get("ilce")
-    numara = request.GET.get("numara")
+    form = CreateForms(request.GET)
+    if form.is_valid():
+        form.save()
 
-    yazı.objects.create(isim=isim, soyisim=soyisim, kimlikno=kimlikno, sehir=sehir, ilce=ilce, numara=numara)
     return render(request, "sent.html")
 
 
