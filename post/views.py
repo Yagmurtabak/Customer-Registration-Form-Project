@@ -13,20 +13,20 @@ def postlist_view(request):
     word = request.GET.get("word")
     if word:
         customers_list=yazı.objects.filter(
-            Q(Name__contains=word),
-            Q(Surname__contains=word),
-            Q(TC__contains=word),
-            Q(City__contains=word),
-            Q(District__contains=word),
-            Q(Telephone__contains=word)
+            Q(Name__icontains=word)|
+            Q(Surname__icontains=word)|
+            Q(TC__icontains=word)|
+            Q(City__icontains=word)|
+            Q(District__icontains=word)|
+            Q(Telephone__icontains=word)
         ).distinct()
     else:
-        customers_list = yazı.objects.all()    
-    paginator = Paginator(customers_list,5)
+        customers_list = yazı.objects.all() 
 
+    paginator = Paginator(customers_list,5)
     page = request.GET.get('page')
     allcustomers = paginator.get_page(page)
-
+    
     return render(request, "list.html",{"allcustomers": allcustomers})
 
 
