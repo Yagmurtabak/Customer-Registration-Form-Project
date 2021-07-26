@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import yazı
+from .models import NewCustomer
 
 # Register your models here.
 
@@ -8,6 +8,6 @@ class adminYazı(admin.ModelAdmin):
     list_filter = ["yayinTarihi"]
     search_fields = ["Name", "Surname"]
     class Meta:
-        model = yazı
+        model = NewCustomer
 
-admin.site.register(yazı,adminYazı)
+admin.site.register(NewCustomer,adminYazı)

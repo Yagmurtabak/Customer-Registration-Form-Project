@@ -1,9 +1,11 @@
+from django import forms
 from django.forms import ModelForm, fields
-from .models import yazı
+from .models import NewCustomer
 
-class CreateForms(ModelForm):
+
+class CustomerForm(ModelForm):
     class Meta:
-        model = yazı
-
+        model = NewCustomer
+        
         fields = '__all__'
 

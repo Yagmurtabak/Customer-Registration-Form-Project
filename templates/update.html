@@ -9,15 +9,15 @@
 <body>
  <h1>Update Page</h1>
 
- <form action="/post/updateYolla/{{ yazı.id}}" method="GET">
-     Name: <input name="isim" type="text" value="{{ yazı.Name}}"><br> <br>
-     Surname: <input name="soyisim" type="text" value="{{ yazı.Surname}}"><br> <br>
-     TC : <input name="kimlikno" type="text" value="{{ yazı.TC}}"><br> <br>
-     City: <input name="sehir" type="text" value="{{ yazı.City}}"><br> <br>
-     District:<input name="ilce" type="text" value="{{ yazı.District}}"><br> <br>
-     Telephone:<input name="numara" type="text" value="{{ yazı.Telephone}}">
+ <form action="/post/updateYolla/{{ NewCustomer.id}}" method="GET">
+     Name: <input name="isim" type="text" value="{{ NewCustomer.Name}}"><br> <br>
+     Surname: <input name="soyisim" type="text" value="{{ NewCustomer.Surname}}"><br> <br>
+     TC : <input name="kimlikno" type="text" value="{{ NewCustomer.TC}}"><br> <br>
+     City: <input name="sehir" type="text" value="{{ NewCustomer.City}}"><br> <br>
+     District:<input name="ilce" type="text" value="{{ NewCustomer.District}}"><br> <br>
+     Telephone:<input name="numara" type="text" value="{{ NewCustomer.Telephone}}">
 
-     <input type="hidden" name="id" value="{{yazı.id}}">
+     <input type="hidden" name="id" value="{{NewCustomer.id}}">
 
 
      <br><br>

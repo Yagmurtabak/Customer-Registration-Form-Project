@@ -14,10 +14,10 @@
         <input type="text" name="word" > <input type="submit" value="search">
     </form>
 
-{% for yazı in allcustomers %}
-    <h2><a href = "detail/{{ yazı.id }}">{{ yazı.Name }}</a></h2>
-    <h3>{{ yazı.Surname }}</h3>
-    <h6>{{ yazı.yayinTarihi }}</h6>
+{% for NewCustomer in allcustomers %}
+    <h2><a href = "detail/{{ NewCustomer.id }}">{{ NewCustomer.Name }}</a></h2>
+    <h3>{{ NewCustomer.Surname }}</h3>
+    <h6>{{ NewCustomer.yayinTarihi }}</h6>
     <hr>
 {% endfor %}
 

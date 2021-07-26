@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class yazı(models.Model):
+class NewCustomer(models.Model):
     Name = models.CharField(max_length=20)
     Surname  = models.CharField(max_length=20)
     TC = models.IntegerField(null=True, unique=True)
