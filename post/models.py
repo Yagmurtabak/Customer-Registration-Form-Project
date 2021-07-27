@@ -9,7 +9,7 @@ class NewCustomer(models.Model):
     City = models.CharField(max_length=15,null=True)
     District = models.CharField(max_length=15,null=True)
     Telephone = models.IntegerField(null=True)
-    yayinTarihi= models.DateTimeField(auto_now_add=True)
+    Date= models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.Name

@@ -12,5 +12,5 @@ urlpatterns = [
 
     path('delete/<int:id>', postdelete_view),
     path('create', postcreate_view),
-    path('formdoldur', formdoldur_view),
+    path('newform', newform_view),
 ]

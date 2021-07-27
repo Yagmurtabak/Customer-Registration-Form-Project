@@ -17,7 +17,7 @@
 {% for NewCustomer in allcustomers %}
     <h2><a href = "detail/{{ NewCustomer.id }}">{{ NewCustomer.Name }}</a></h2>
     <h3>{{ NewCustomer.Surname }}</h3>
-    <h6>{{ NewCustomer.yayinTarihi }}</h6>
+    <h6>{{ NewCustomer.Date }}</h6>
     <hr>
 {% endfor %}
 
