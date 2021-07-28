@@ -3,15 +3,15 @@ from django import forms
 from django.core import paginator
 from django.http.response import HttpResponse
 from django.shortcuts import redirect, render,HttpResponseRedirect
-from .forms import CustomerForm
-from .models import NewCustomer
 from django.core.paginator import Paginator
 from django.db.models import Q
+from .forms import CustomerForm
+from .models import NewCustomer
 
 # Create your views here.
 
 def postlist_view(request):
-    word = request.GET.get("word")
+    word = request.POST.get("word")
     if word:
         customers_list=NewCustomer.objects.filter(
             Q(Name__icontains=word)|
@@ -25,7 +25,7 @@ def postlist_view(request):
         customers_list = NewCustomer.objects.all().order_by('-Date')
 
     paginator = Paginator(customers_list,5)
-    page = request.GET.get('page')
+    page = request.POST.get('page')
     allcustomers = paginator.get_page(page)
     
     return render(request, "list.html",{"allcustomers": allcustomers})
@@ -40,42 +40,41 @@ def postcreate_view(request):
     return render(request, "create.html", {"form": form})
 
 def newform_view(request):
-        
-        if request.method == "POST" :
-            form = CustomerForm(request.POST)
-            if form.is_valid():
-                form.save()
-                return render(request, "sent.html" ,{"CustomerForm":CustomerForm})
-            if not() :
-                return render(request, "error.html",{"CustomerForm":CustomerForm})     
-            
+    if request.method =='POST': 
+        form = CustomerForm(request.POST)
+        if form.is_valid():
+            form.save()    
+            return render(request, "sent.html")
+        else:
+            return render(request, "error.html",{'form':form})
+    else:
+        detail =CustomerForm(None)
+        return render(request, "error.html",{'form':detail})
 
- 
-        
 
 def postupdate_view(request,id):
-        if request.POST.get("name"):
-            name  = request.POST.get("name")
-            surname = request.POST.get("surname")
-            identificationnumber = request.POST.get("identificationnumber")
-            city = request.POST.get("city")
-            district = request.POST.get("district")
-            telephone = request.POST.get("telephone")
-            id = request.POST.get("id")
+    if request.POST.get("name"):
+        name  = request.POST.get("name")
+        surname = request.POST.get("surname")
+        identificationnumber = request.POST.get("identificationnumber")
+        city = request.POST.get("city")
+        district = request.POST.get("district")
+        telephone = request.POST.get("telephone")
+        id = request.POST.get("id")
 
-            NewCustomerObject = NewCustomer.objects.get(id=id)
+        NewCustomerObject = NewCustomer.objects.get(id=id)
 
-            NewCustomerObject.Name  = name
-            NewCustomerObject.Surname = surname
-            NewCustomerObject.TC = identificationnumber
-            NewCustomerObject.City = city
-            NewCustomerObject.District = district
-            NewCustomerObject.Telephone = telephone
-            NewCustomerObject.save()
-        else:
-            NewCustomerObject = NewCustomer.objects.get(id=id)   
+        NewCustomerObject.Name  = name
+        NewCustomerObject.Surname = surname
+        NewCustomerObject.TC = identificationnumber
+        NewCustomerObject.City = city
+        NewCustomerObject.District = district
+        NewCustomerObject.Telephone = telephone
+        NewCustomerObject.save()
+    else:
+        NewCustomerObject = NewCustomer.objects.get(id=id)   
         
-        return render(request, "update.html", {"NewCustomer":NewCustomerObject})
+    return render(request, "update.html", {"NewCustomer":NewCustomerObject})
 
 
 
