@@ -1,6 +1,5 @@
 
 from django import forms
-from django.core import paginator
 from django.http.response import HttpResponse
 from django.shortcuts import redirect, render,HttpResponseRedirect
 from django.core.paginator import Paginator
@@ -24,7 +23,7 @@ def postlist_view(request):
     else:
         customers_list = NewCustomer.objects.all().order_by('-Date')
 
-    paginator = Paginator(customers_list,5)
+    paginator = Paginator(customers_list, 5)
     page = request.POST.get('page')
     allcustomers = paginator.get_page(page)
     
@@ -40,16 +39,12 @@ def postcreate_view(request):
     return render(request, "create.html", {"form": form})
 
 def newform_view(request):
-    if request.method =='POST': 
         form = CustomerForm(request.POST)
         if form.is_valid():
             form.save()    
             return render(request, "sent.html")
         else:
-            return render(request, "error.html",{'form':form})
-    else:
-        detail =CustomerForm(None)
-        return render(request, "error.html",{'form':detail})
+            return render(request, "create.html",{"form":form})
 
 
 def postupdate_view(request,id):
