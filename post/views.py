@@ -1,5 +1,5 @@
-
 from django import forms
+from django.core import paginator
 from django.http.response import HttpResponse
 from django.shortcuts import redirect, render,HttpResponseRedirect
 from django.core.paginator import Paginator
@@ -10,7 +10,7 @@ from .models import NewCustomer
 # Create your views here.
 
 def postlist_view(request):
-    word = request.POST.get("word")
+    word = request.GET.get("word")
     if word:
         customers_list=NewCustomer.objects.filter(
             Q(Name__icontains=word)|
@@ -23,11 +23,12 @@ def postlist_view(request):
     else:
         customers_list = NewCustomer.objects.all().order_by('-Date')
 
-    paginator = Paginator(customers_list, 5)
-    page = request.POST.get('page')
+    paginator = Paginator(customers_list,5)
+    page = request.GET.get('page')
     allcustomers = paginator.get_page(page)
     
     return render(request, "list.html",{"allcustomers": allcustomers})
+
 
 
 def postdetail_view(request,id):

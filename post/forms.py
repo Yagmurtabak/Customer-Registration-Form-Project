@@ -15,9 +15,14 @@ class CustomerForm(ModelForm):
          
 
         TC = self.cleaned_data.get('TC')
+        Telephone = self.cleaned_data.get('Telephone')
 
         if len(str(TC)) != 11:
             self._errors['TC'] = self.error_class([
-                'TC Should Contain of 11 characters'])
-
+                'TC must contain of 11 characters.Please try again.'])
+        
+        if len(str(Telephone)) != 10:
+            self._errors['Telephone'] = self.error_class([
+                'TC must contain of 10 characters.Please try again.'])
+        
         return self.cleaned_data
