@@ -18,7 +18,8 @@ def postlist_view(request):
             Q(TC__icontains=word)|
             Q(City__icontains=word)|
             Q(District__icontains=word)|
-            Q(Telephone__icontains=word)
+            Q(Telephone__icontains=word)|
+            Q(id_icontains=word)
         ).distinct().order_by('-Date')    
     else:
         customers_list = NewCustomer.objects.all().order_by('-Date')
