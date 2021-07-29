@@ -9,7 +9,7 @@
 <body>
  <h1>Update Page</h1>
 
- <form action="/post/updateYolla/{{ NewCustomer.id}}" method="POST"> {%csrf_token %}
+ <form action="/post/update/{{ NewCustomer.id}}" method="POST"> {%csrf_token %}
      Name: <input name="name" type="text" value="{{ NewCustomer.Name}}"><br> <br>
      Surname: <input name="surname" type="text" value="{{ NewCustomer.Surname}}"><br> <br>
      TC : <input name="identificationnumber" type="text" value="{{ NewCustomer.TC}}"><br> <br>

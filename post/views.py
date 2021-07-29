@@ -1,44 +1,36 @@
-from django import forms
-from django.core import paginator
-from django.http.response import HttpResponse
-from django.shortcuts import redirect, render,HttpResponseRedirect
-from django.core.paginator import Paginator
+from django.shortcuts import  redirect, render,HttpResponseRedirect
 from django.db.models import Q
+from django.views.generic import ListView,DetailView,CreateView,DeleteView,UpdateView
+
 from .forms import CustomerForm
 from .models import NewCustomer
 
-# Create your views here.
 
-def postlist_view(request):
-    word = request.GET.get("word")
-    if word:
-        customers_list=NewCustomer.objects.filter(
-            Q(Name__icontains=word)|
-            Q(Surname__icontains=word)|
-            Q(TC__icontains=word)|
-            Q(City__icontains=word)|
-            Q(District__icontains=word)|
-            Q(Telephone__icontains=word)|
-            Q(id_icontains=word)
-        ).distinct().order_by('-Date')    
-    else:
-        customers_list = NewCustomer.objects.all().order_by('-Date')
+class PostListView(ListView):
+    template_name= 'list.html'
+    model = NewCustomer
+    context_object_name='allcustomers'
+    paginate_by = 5
+    ordering = ['-Date']
 
-    paginator = Paginator(customers_list,5)
-    page = request.GET.get('page')
-    allcustomers = paginator.get_page(page)
     
-    return render(request, "list.html",{"allcustomers": allcustomers})
+class PostDetailView(DetailView):
+    template_name= 'detail.html'
+    model = NewCustomer
+    context_object_name='NewCustomer'
 
 
+class PostCreateView(CreateView):
+    def get(self,request,*args,**kwargs):
+        form = CustomerForm()
+        return render(request, "create.html", {"form": form})
 
-def postdetail_view(request,id):
-    NewCustomerObject = NewCustomer.objects.get(id=id)
-    return render(request, "detail.html",{ "NewCustomer": NewCustomerObject})
+ 
+class PostDeleteView(DeleteView):
+    model = NewCustomer
+    template_name='delete.html'
+    success_url ="/post/"
 
-def postcreate_view(request):
-    form = CustomerForm()
-    return render(request, "create.html", {"form": form})
 
 def newform_view(request):
         form = CustomerForm(request.POST)
@@ -48,37 +40,14 @@ def newform_view(request):
         else:
             return render(request, "create.html",{"form":form})
 
+class PostUpdateViev(UpdateView):
+    model = NewCustomer
+    template_name='update.html'
+    success_url ="/post/"
 
-def postupdate_view(request,id):
-    if request.POST.get("name"):
-        name  = request.POST.get("name")
-        surname = request.POST.get("surname")
-        identificationnumber = request.POST.get("identificationnumber")
-        city = request.POST.get("city")
-        district = request.POST.get("district")
-        telephone = request.POST.get("telephone")
-        id = request.POST.get("id")
-
-        NewCustomerObject = NewCustomer.objects.get(id=id)
-
-        NewCustomerObject.Name  = name
-        NewCustomerObject.Surname = surname
-        NewCustomerObject.TC = identificationnumber
-        NewCustomerObject.City = city
-        NewCustomerObject.District = district
-        NewCustomerObject.Telephone = telephone
-        NewCustomerObject.save()
-    else:
-        NewCustomerObject = NewCustomer.objects.get(id=id)   
-        
-    return render(request, "update.html", {"NewCustomer":NewCustomerObject})
-
-
-
-def postdelete_view(request, id):
-    NewCustomerObject = NewCustomer.objects.get(id=id)
-    NewCustomerObject.delete()
+    form_class = CustomerForm
     
-    return HttpResponseRedirect("/post")
-
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(PostUpdateViev,self).form_valid(form)
 

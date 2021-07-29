@@ -1,8 +1,7 @@
-from django.forms import ModelForm,fields
-from django import forms
+from django.forms import ModelForm
+
 from .models import NewCustomer
 from .models import *
-
 
 class CustomerForm(ModelForm):
     class Meta:
@@ -21,8 +20,8 @@ class CustomerForm(ModelForm):
             self._errors['TC'] = self.error_class([
                 'TC must contain of 11 characters.Please try again.'])
         
-        if len(str(Telephone)) != 10:
+        if len(str(Telephone)) != 11:
             self._errors['Telephone'] = self.error_class([
-                'Telephone must contain of 10 characters.Please try again.'])
+                'Telephone must contain of 11 characters.Please add 0 per and try again.'])
         
         return self.cleaned_data
