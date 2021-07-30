@@ -1,10 +1,8 @@
-from django.shortcuts import  redirect, render,HttpResponseRedirect
-from django.db.models import Q
-from django.views.generic import ListView,DetailView,CreateView,DeleteView,UpdateView
+from django.shortcuts import render
+from django.views.generic import ListView,DetailView,CreateView,DeleteView,UpdateView,FormView
 
 from .forms import CustomerForm
 from .models import NewCustomer
-
 
 class PostListView(ListView):
     template_name= 'list.html'
@@ -21,9 +19,13 @@ class PostDetailView(DetailView):
 
 
 class PostCreateView(CreateView):
-    def get(self,request,*args,**kwargs):
-        form = CustomerForm()
-        return render(request, "create.html", {"form": form})
+    template_name='create.html'
+    form_class = CustomerForm
+    success_url ="/post/"
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(PostCreateView,self).form_valid(form)
 
  
 class PostDeleteView(DeleteView):
@@ -32,13 +34,19 @@ class PostDeleteView(DeleteView):
     success_url ="/post/"
 
 
-def newform_view(request):
-        form = CustomerForm(request.POST)
+class RegisterView(FormView):
+    template_name = 'sent.html'
+    form_class = CustomerForm
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
         if form.is_valid():
             form.save()    
-            return render(request, "sent.html")
         else:
             return render(request, "create.html",{"form":form})
+
+        return render(request, self.template_name, {'form': form})
+
 
 class PostUpdateViev(UpdateView):
     model = NewCustomer

@@ -2,7 +2,7 @@
 from django.urls import path
 
 from post.views import *
-from post.views import PostCreateView, PostListView,PostDetailView,PostDeleteView,PostUpdateViev
+from post.views import PostCreateView, PostListView,PostDetailView,PostDeleteView,PostUpdateViev,RegisterView
 
 urlpatterns = [
     path('',PostListView.as_view(), name="list"),
@@ -10,5 +10,5 @@ urlpatterns = [
     path('update/<int:pk>', PostUpdateViev.as_view(), name="update"),
     path('delete/<int:pk>', PostDeleteView.as_view(),name="delete"),
     path('create', PostCreateView.as_view(), name="create"),
-    path('newform', newform_view),
+    path('register', RegisterView.as_view(), name= "register"),
 ]

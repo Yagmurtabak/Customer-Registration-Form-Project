@@ -8,18 +8,10 @@
 </head>
 <body>
  <h1>Update Page</h1>
-
- <form action="/post/update/{{ NewCustomer.id}}" method="POST"> {%csrf_token %}
-     Name: <input name="name" type="text" value="{{ NewCustomer.Name}}"><br> <br>
-     Surname: <input name="surname" type="text" value="{{ NewCustomer.Surname}}"><br> <br>
-     TC : <input name="identificationnumber" type="text" value="{{ NewCustomer.TC}}"><br> <br>
-     City: <input name="city" type="text" value="{{ NewCustomer.City}}"><br> <br>
-     District:<input name="district" type="text" value="{{ NewCustomer.District}}"><br> <br>
-     Telephone:<input name="telephone" type="text" value="{{ NewCustomer.Telephone}}">
-
-     <input type="hidden" name="id" value="{{NewCustomer.id}}">
-
-
+  <form action="/post/register" method="POST"> {%csrf_token %}
+    
+    {{ form.as_p }}
+ 
      <br><br>
      <input type="submit">
 
