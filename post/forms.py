@@ -12,7 +12,6 @@ class CustomerForm(ModelForm):
     def clean(self):
         super(CustomerForm, self).clean()
          
-
         TC = self.cleaned_data.get('TC')
         Telephone = self.cleaned_data.get('Telephone')
 

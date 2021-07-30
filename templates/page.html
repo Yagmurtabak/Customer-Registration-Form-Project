@@ -5,12 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{page}}</title>
+    <style>
+    p {
+        color: black ;
+        text-align: center;   
+    } 
+    div {
+        border: 1px solid green;
+        padding: 8px;
+    }
+    h1 {
+        text-shadow: 2px 2px 5px green;
+        text-align: center;
+        text-transform:uppercase ;
+    }
+    </style>
 </head>
 <body>
-Welcome to the site. You are now on the {{page}} . You can switch to other pages from the menu below.
+<div>
+<p> <h1>Welcome to the website</h1> </p>
 <br>
-<a href="/">Home Page</a><br>
-<a href="/post">Customers List</a><br>
-<a href="post/create">New Registration</a><br>
+<p><a href="/">Home Page</a><br></p>
+<p><a href="/post">Customers List</a><br></p>
+<p><a href="post/create">New Registration</a><br></p>
+</div>
+
+
 </body>
 </html>
