@@ -4,30 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <title>{{page}}</title>
     <style>
-    p {
-        color: black ;
-        text-align: center;   
-    } 
-    div {
-        border: 1px solid green;
-        padding: 8px;
-    }
-    h1 {
-        text-shadow: 2px 2px 5px green;
-        text-align: center;
-        text-transform:uppercase ;
-    }
     </style>
 </head>
 <body>
 <div>
-<p> <h1>Welcome to the website</h1> </p>
+<div class="container">
 <br>
-<p><a href="/">Home Page</a><br></p>
-<p><a href="/post">Customers List</a><br></p>
-<p><a href="post/create">New Registration</a><br></p>
+<ul class="list-group">
+<p><li class="list-group-item"><a href="/">Home Page</a><br></li></p>
+<p><li class="list-group-item"><a href="/post">Customers List</a><br></li></p>
+<p><li class="list-group-item"><a href="post/create">New Registration</a><br></li></p>
+</div>
+</ul>
 </div>
 
 
