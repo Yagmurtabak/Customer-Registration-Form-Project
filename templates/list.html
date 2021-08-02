@@ -23,9 +23,9 @@
     <br>
 
     {% for NewCustomer in allcustomers %}
-        <li class="list-group-item"><h2><a href = "detail/{{ NewCustomer.id }}">{{ NewCustomer.Name }}</a></h2></li>
-        <li class="list-group-item"><h3>{{ NewCustomer.Surname }}</h3></li>
-        <li class="list-group-item"><h6>{{ NewCustomer.Date }}</h6></li>
+        <li class="list-group-item"><h2><a href = "detail/{{ NewCustomer.id }}">{{ NewCustomer.name }}</a></h2></li>
+        <li class="list-group-item"><h3>{{ NewCustomer.surname }}</h3></li>
+        <li class="list-group-item"><h6>{{ NewCustomer.date }}</h6></li>
     <hr>
     {% endfor %}
 </ul>  

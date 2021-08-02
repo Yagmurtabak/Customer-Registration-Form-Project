@@ -12,15 +12,15 @@ class CustomerForm(ModelForm):
     def clean(self):
         super(CustomerForm, self).clean()
          
-        TC = self.cleaned_data.get('TC')
-        Telephone = self.cleaned_data.get('Telephone')
+        tc = self.cleaned_data.get('tc')
+        telephone = self.cleaned_data.get('telephone')
 
-        if len(str(TC)) != 11:
-            self._errors['TC'] = self.error_class([
+        if len(str(tc)) != 11:
+            self._errors['tc'] = self.error_class([
                 'TC must contain of 11 characters.Please try again.'])
         
-        if len(str(Telephone)) != 11:
-            self._errors['Telephone'] = self.error_class([
+        if len(str(telephone)) != 11:
+            self._errors['telephone'] = self.error_class([
                 'Telephone must contain of 11 characters.Please add 0 per and try again.'])
         
         return self.cleaned_data
