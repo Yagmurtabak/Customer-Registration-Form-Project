@@ -1,47 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <title>New Registration Page</title>
+  <title>New Registration Page</title>
 </head>
+
 <body>
-<div class="container mt-3">
- <h1>New Registration</h1>
+  <div class="container mt-3">
+    <h1>New Registration</h1>
 
-<ul class="list-group" id="myList">
- <form action="/post/registerate" method="POST"> {%csrf_token %}
-    
-    <li class="list-group-item">{{ form.as_p }}</li>
-  </ul> 
-</div>
+    <ul class="list-group" id="myList">
+      <form action="/post/registerate" method="POST"> {%csrf_token %}
 
-<script>
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myList li").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        <li class="list-group-item">{{ form.as_p }}</li>
+    </ul>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      $("#myInput").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#myList li").filter(function () {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
     });
-  });
-});
-</script>
+  </script>
 
 
-{% for field in form %}
+  {% for field in form %}
   {{ field.errors }}
-{% endfor %}
+  {% endfor %}
 
   <input type="submit" value="Submit" button type="button" class="btn btn-secondary">
 
-</form>
+  </form>
 
 </body>
+
 </html>
 <br><br>
 

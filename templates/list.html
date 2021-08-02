@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,58 +13,64 @@
 
 <body>
 
-<div class="container mt-3">
-<h1>Customers List</h1>
+    <div class="container mt-3">
+        <h1>Customers List</h1>
 
-<ul class="list-group" id="myList">
+        <ul class="list-group" id="myList">
 
-    <form method='GET'>
-        <input type='text' name='word' value='{{ request.GET.word }}'>  
-        <input class="button" type='submit' value="Search">
-    <br>
+            <form method='GET'>
+                <input type='text' name='word' value='{{ request.GET.word }}'>
+                <input class="button" type='submit' value="Search">
+                <br>
 
-    {% for NewCustomer in allcustomers %}
-        <li class="list-group-item"><h2><a href = "detail/{{ NewCustomer.id }}">{{ NewCustomer.name }}</a></h2></li>
-        <li class="list-group-item"><h3>{{ NewCustomer.surname }}</h3></li>
-        <li class="list-group-item"><h6>{{ NewCustomer.date }}</h6></li>
-    <hr>
-    {% endfor %}
-</ul>  
+                {% for NewCustomer in allcustomers %}
+                <li class="list-group-item">
+                    <h2><a href="detail/{{ NewCustomer.id }}">{{ NewCustomer.name }}</a></h2>
+                </li>
+                <li class="list-group-item">
+                    <h3>{{ NewCustomer.surname }}</h3>
+                </li>
+                <li class="list-group-item">
+                    <h6>{{ NewCustomer.date }}</h6>
+                </li>
+                <hr>
+                {% endfor %}
+        </ul>
 
-<script>
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myList li").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-</script>
+        <script>
+            $(document).ready(function () {
+                $("#myInput").on("keyup", function () {
+                    var value = $(this).val().toLowerCase();
+                    $("#myList li").filter(function () {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+        </script>
 
 
 
-{% if is_paginated %}
-    <nav class="navigation">
-        <ul class="pagination justify-content-end">
-            {% if page_obj.has_previous %}
+        {% if is_paginated %}
+        <nav class="navigation">
+            <ul class="pagination justify-content-end">
+                {% if page_obj.has_previous %}
                 <li class="page-item">
                     <a href="{{request.path}}?page={{ page_obj.previous_page_number }}" class="page-link">Previous</a>
                 </li>
-            {% endif %}
+                {% endif %}
 
-                    <li class="page-item active">
-                        <a href="#" class="page-link">{{ page_obj.number}}</a>
-                    </li>
+                <li class="page-item active">
+                    <a href="#" class="page-link">{{ page_obj.number}}</a>
+                </li>
 
-            {% if page_obj.has_next %}
+                {% if page_obj.has_next %}
                 <li class="page-item">
                     <a href="{{request.path}}?page={{ page_obj.next_page_number }}" class="page-link">Next</a>
                 </li>
-            {% endif %}
-        </ul>   
-    </nav>
-{% endif %}
+                {% endif %}
+            </ul>
+        </nav>
+        {% endif %}
 
 </body>
 

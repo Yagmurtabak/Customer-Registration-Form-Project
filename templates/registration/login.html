@@ -18,7 +18,7 @@
     {% endif %}
 
     <form method="POST" action="{% url 'login' %}">
-    {% csrf_token %}
+        {% csrf_token %}
 
         <p>Username: {{ form.username }}</p>
         <p>Password: {{ form.password }}</p>
