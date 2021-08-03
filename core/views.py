@@ -38,7 +38,7 @@ class customerDetailView(DetailView):
 class customerCreateView(CreateView):
     template_name='create.html'
     form_class = CustomerForm
-    success_url ="/post/"
+    success_url ="/core/"
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -48,7 +48,7 @@ class customerCreateView(CreateView):
 class customerDeleteView(DeleteView):
     model = NewCustomer
     template_name='delete.html'
-    success_url ="/post/"
+    success_url ="/core/"
 
 
 class RegisterView(FormView):
@@ -68,7 +68,7 @@ class RegisterView(FormView):
 class customerUpdateView(UpdateView):
     model = NewCustomer
     template_name='update.html'
-    success_url ="/post/"
+    success_url ="/core/"
 
     form_class = CustomerForm
 

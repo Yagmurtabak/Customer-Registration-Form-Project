@@ -17,7 +17,7 @@
     <h1>New Registration</h1>
 
     <ul class="list-group" id="myList">
-      <form action="/post/registerate" method="POST"> {%csrf_token %}
+      <form action="/core/registerate" method="POST"> {%csrf_token %}
 
         <li class="list-group-item">{{ form.as_p }}</li>
     </ul>
@@ -49,6 +49,6 @@
 <br><br>
 
 
-<a href="/post/create" type="button" class="btn btn-outline-secondary"> Refresh </a>
+<a href="/core/create" type="button" class="btn btn-outline-secondary"> Refresh </a>
 
 <a href="/" type="button" class="btn btn-outline-secondary">Return</a>

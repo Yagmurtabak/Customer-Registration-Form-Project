@@ -19,9 +19,9 @@ from django import urls
 from django.contrib import admin
 from django.urls import path, include
 
-from post.views import *
+from core.views import *
 
-from post.views import register
+from core.views import register
 from home.views import home_view
 
 
@@ -29,7 +29,7 @@ from home.views import home_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home_view),
-    path('post/', include('post.urls')),
+    path('core/', include('core.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('register/', register, name="register"),
     

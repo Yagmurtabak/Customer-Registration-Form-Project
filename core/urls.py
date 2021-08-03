@@ -1,9 +1,9 @@
 from django.urls import path
 
-from post.views import *
+from core.views import *
 
-from post.views import customerCreateView, customerListView,customerDetailView,customerDeleteView,customerUpdateView,RegisterView
-from post.views import register
+from core.views import customerCreateView, customerListView,customerDetailView,customerDeleteView,customerUpdateView,RegisterView
+from core.views import register
 from django.contrib.auth import views as authViews
 
 urlpatterns = [
