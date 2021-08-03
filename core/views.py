@@ -5,6 +5,7 @@ from django.views.generic import ListView,DetailView,CreateView,DeleteView,Updat
 from django.contrib.auth.forms import UserCreationForm
 from django.db.models import Q
 
+
 from .forms import CustomerForm
 from .models import NewCustomer
 
@@ -38,7 +39,7 @@ class customerDetailView(DetailView):
 class customerCreateView(CreateView):
     template_name='create.html'
     form_class = CustomerForm
-    success_url ="/core/"
+    success_url =""
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -48,7 +49,7 @@ class customerCreateView(CreateView):
 class customerDeleteView(DeleteView):
     model = NewCustomer
     template_name='delete.html'
-    success_url ="/core/"
+    success_url ="/"
 
 
 class RegisterView(FormView):
@@ -68,7 +69,7 @@ class RegisterView(FormView):
 class customerUpdateView(UpdateView):
     model = NewCustomer
     template_name='update.html'
-    success_url ="/core/"
+    success_url ="/"
 
     form_class = CustomerForm
 
