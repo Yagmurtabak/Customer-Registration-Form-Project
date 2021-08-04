@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 
+{% load static %}
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}?{% now 'U'%}">
     <title>Login</title>
+
+
 </head>
 
 <body>
@@ -17,15 +22,30 @@
     <p> Hey, you can't acces that page.</p>
     {% endif %}
 
-    <form method="POST" action="{% url 'login' %}">
-        {% csrf_token %}
+    <div class="container">
 
-        <p>Username: {{ form.username }}</p>
-        <p>Password: {{ form.password }}</p>
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="title">Login</div>
+            <div class="input-box">
+                <p>Username: {{ form.username }}</p>
+                <div class="underline"></div>
+            </div>
 
-        <p><input type="submit" value="login"></p>
-        <input type="hidden" name="next" value=" {{ next }}">
-    </form>
-</body>
+            <div class="input-box">
+                <p> Password: {{ form.password }}</p> 
+                <div class="underline"></div>
+            </div>
 
-</html>
+            <div class="input-box">
+                <p><input type="submit" value="Login"></p>
+                <input type="hidden" name="next" value=" {{ next }}">
+            </div>
+        </form>
+    </div>
+
+
+    
+    </body>
+
+    </html>
