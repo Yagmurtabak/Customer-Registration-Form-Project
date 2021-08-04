@@ -1,64 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% block title %}
+Customer Detail Page
+{% endblock  %}}
+
+{% block body %}
+{% load static %}
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}?{% now 'U'%}">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
   <title>Customers Detail</title>
 </head>
 
 <body>
 
-  <div class="container mt-3">
-    <ul class="list-group" id="myList">
 
-      <li class="list-group-item">Name:<h1>{{ NewCustomer.name }}</h1>
-      </li>
+  <div class="header">
+    <div class="left-header">
+      <ul>
 
-      <li class="list-group-item">Surname:<h2>{{ NewCustomer.surname }}</h2>
-      </li>
+        <li class="active"><a href="/"><i class="fa fa-home" aria-hidden="true"></i>Home Page</a></a></li>
+        <li class="#"><a href="/create"><i class="fa fa-user" aria-hidden="true"></i>Add New Customer</a></a></li>
+        <li class="#"><a href="{% url 'logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>LogOut</a></a></li>
+        <p>Welcome</p>
+      </ul>
+    </div>
 
-      <li class="list-group-item">TC:<h3>{{ NewCustomer.tc }}</h3>
-      </li>
+    <div class="container">
+      <h1>Customer Detail</h1>
+      <ul class="list-group" id="myList">
 
-      <li class="list-group-item">City:<h4>{{ NewCustomer.city }}</h4>
-      </li>
+        <li class="list-group-item">Name:<h1><small><small>{{ NewCustomer.name }}</small></small></h1>
+        </li>
 
-      <li class="list-group-item">District:<h5>{{ NewCustomer.district }}</h5>
-      </li>
+        <li class="list-group-item">Surname:<h2><small>{{ NewCustomer.surname }}</small></h2>
+        </li>
 
-      <li class="list-group-item">Telephone:<h6>{{ NewCustomer.telephone }}</h6>
-      </li>
-    </ul>
-  </div>
-  <br>
+        <li class="list-group-item">TC:<h3><small>{{ NewCustomer.tc }}<small></h3>
+        </li>
 
-  <script>
-    $(document).ready(function () {
-      $("#myInput").on("keyup", function () {
-        var value = $(this).val().toLowerCase();
-        $("#myList li").filter(function () {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        <li class="list-group-item">City:<h4>{{ NewCustomer.city }}</h4>
+        </li>
+
+        <li class="list-group-item">District:<h5>{{ NewCustomer.district }}</h5>
+        </li>
+
+        <li class="list-group-item">Telephone:<h6>{{ NewCustomer.telephone }}</h6>
+        </li>
+      </ul>
+    </div>
+    <br>
+
+    <script>
+      $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+          var value = $(this).val().toLowerCase();
+          $("#myList li").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          });
         });
       });
-    });
-  </script>
+    </script>
 
 
-  <div class="container">
-    <a href="/core/update/{{ NewCustomer.id}}"><button type="button" class="btn btn-secondary">Update</button>
-      <a href="/core/delete/{{ NewCustomer.id}}"><button type="button" class="btn btn-secondary">Delete</button>
-  </div>
-  <br><br>
+    <div class="container">
+      <a href="/core/update/{{ NewCustomer.id}}"><button type="button" class="btn btn-secondary">Update</button>
+        <a href="/core/delete/{{ NewCustomer.id}}"><button type="button" class="btn btn-secondary">Delete</button>
+          <a href="/core/" type="button" class="btn btn-outline-secondary">Return</a>
+    </div>
+    <br><br>
 
-  <a href="/core/" type="button" class="btn btn-outline-secondary">Return</a>
+
 
 </body>
 
-</html>
+{% endblock %}

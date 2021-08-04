@@ -24,3 +24,5 @@ class CustomerForm(ModelForm):
                 'Telephone must contain of 11 characters.Please add 0 per and try again.'])
         
         return self.cleaned_data
+    
+    

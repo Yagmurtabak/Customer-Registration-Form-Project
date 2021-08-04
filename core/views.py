@@ -73,7 +73,7 @@ class customerUpdateView(UpdateView):
 
     form_class = CustomerForm
 
-def form_valid(self, form):
+    def form_valid(self, form):
         form.instance.user = self.request.user
         return super(customerUpdateView,self).form_valid(form)
 

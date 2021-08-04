@@ -12,10 +12,13 @@
     <form method="post" action="{% url 'register' %}">
         {% csrf_token %}
 
-        {{ form.as_p}}
-    </form>
+        {% if form.errors %}
+        <p> There ara errors in the form! </p>
+        {% endif %}
 
-    <input type="submit" value="Register">
+        {{ form }}
+        <input type="submit" value="Register">
+    </form>
 </body>
 
 </html>

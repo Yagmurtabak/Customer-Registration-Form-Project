@@ -1,0 +1,58 @@
+.header{
+
+  font-family: Times New Roman;
+  color: rgb(37, 36, 36);
+}
+
+.mid-header {
+  padding: 5px;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+
+}
+
+.left-header {
+  
+  padding: 15px;
+  background :rgb(34, 32, 32);
+  
+  
+}
+
+.left-header li{
+  display: inline;
+  width: 150px;
+  margin: 15px;
+  padding: 10px;
+  
+}
+
+.left-header ul li a{
+  text-decoration: none;
+  color:white;
+
+}
+.container {
+  font-family: Times New Roman;
+  color: rgb(37, 36, 36);
+  
+}
+
+.active, .left-header ul li:hover{
+  background: rgb(131, 130, 130);
+  border-radius: 20px;
+}
+
+.left-header .fa{
+  margin-right: 8px;
+}
+
+.navigation a{
+  font-family: Times New Roman;
+  color: rgb(37, 36, 36);
+}
+
+.left-header .p{
+  color: white;
+}

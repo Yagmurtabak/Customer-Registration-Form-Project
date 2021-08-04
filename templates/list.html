@@ -1,92 +1,116 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+
+
+{% block title %}
+HomePage
+{% endblock  %}}
+
+{% block body %}
+
+{% load static %}
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}?{% now 'U'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <style>
-    li {
-  display: inline;
-}
-    </style>
-
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-    <div class="container">
-        <br>
 
-        <ul class="list-group">
-            <p>
-                <li class="list-group-item"><a href="/html/default.asp" target="_blank"><a href="core/create">New Registration</a><br></li>
-            </p>
-        </ul>
+    <div class="header">
+        <div class="left-header">
+            <ul>
 
-    </div>
-    <div class="container mt-3">
-        <h1>Customers List</h1>
+                <li class="active"><a href="/"><i class="fa fa-home" aria-hidden="true"></i>Home Page</a></a></li>
+                <li class="#"><a href="core/create"><i class="fa fa-user" aria-hidden="true"></i>Add New Customer</a></a></li>
+                <li class="#"><a href="{% url 'logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>LogOut</a></a></li>
 
-        <ul class="list-group" id="myList">
-
+            </ul>
+        </div>
+        <br><br>
+        <div class="mid-header">
             <form method='GET'>
                 <input type='text' name='word' value='{{ request.GET.word }}'>
                 <input class="button" type='submit' value="Search">
-                <br>
+
+        </div>
+
+    </div>
+    </div>
+
+    <div class="header">
+        <h1>Customers List</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+
 
                 {% for NewCustomer in allcustomers %}
-                <li class="list-group-item">
-                    <h2><a href="detail/{{ NewCustomer.id }}">{{ NewCustomer.name }}</a></h2>
-                </li>
-                <li class="list-group-item">
-                    <h3>{{ NewCustomer.surname }}</h3>
-                </li>
-                <li class="list-group-item">
-                    <h6>{{ NewCustomer.date }}</h6>
-                </li>
-                <hr>
+                <tr>
+                    <td>
+                        <h2><a href="detail/{{ NewCustomer.id }}" style="color:black">{{ NewCustomer.name }}</a></h2>
+                    </td>
+                    <td>
+                        <h3>{{ NewCustomer.surname }}</h3>
+                    </td>
+                    <td>
+                        <h6>{{ NewCustomer.date }}</h6>
+                    </td>
+                </tr>
                 {% endfor %}
-        </ul>
+            </tbody>
+        </table>
+    </div>
+    <hr>
 
-        <script>
-            $(document).ready(function () {
-                $("#myInput").on("keyup", function () {
-                    var value = $(this).val().toLowerCase();
-                    $("#myList li").filter(function () {
-                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                    });
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myList li").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             });
-        </script>
+        });
+    </script>
 
 
 
-        {% if is_paginated %}
-        <nav class="navigation">
-            <ul class="pagination justify-content-end">
-                {% if page_obj.has_previous %}
-                <li class="page-item">
-                    <a href="{{request.path}}?page={{ page_obj.previous_page_number }}" class="page-link">Previous</a>
-                </li>
-                {% endif %}
 
-                <li class="page-item active">
-                    <a href="#" class="page-link">{{ page_obj.number}}</a>
-                </li>
+    {% if is_paginated %}
+    <nav class="navigation">
+        <ul class="pagination justify-content-end">
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a href="{{request.path}}?page={{ page_obj.previous_page_number }}" class="page-link"
+                    style=”color:black”>Previous</a>
+            </li>
+            {% endif %}
 
-                {% if page_obj.has_next %}
-                <li class="page-item">
-                    <a href="{{request.path}}?page={{ page_obj.next_page_number }}" class="page-link">Next</a>
-                </li>
-                {% endif %}
-            </ul>
-        </nav>
-        {% endif %}
+            <li class="page-item ">
+                <a href="#" class="page-link" style=”color:black”>{{ page_obj.number}}</a>
+            </li>
+
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a href="{{request.path}}?page={{ page_obj.next_page_number }}" class="page-link"
+                    style=”color:black”>Next</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
 
 </body>
-
-</html>
+{% endblock %}

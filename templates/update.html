@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% block title %}
+Update Page
+{% endblock  %}}
+
+
+{% block body %}
+{% load static %}
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}?{% now 'U'%}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -13,8 +21,19 @@
 </head>
 
 <body>
+
+    <div class="header">
+        <div class="left-header">
+            <ul>
+
+                <li class="active"><a href="/"><i class="fa fa-home" aria-hidden="true"></i>Home Page</a></a></li>
+                <li class="#"><a href="/create"><i class="fa fa-user" aria-hidden="true"></i>Add New Customer</a></a></li>
+                <li class="#"><a href="{% url 'logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>LogOut</a></a></li>
+
+            </ul>
+        </div>
   <div class="container mt-3">
-    <h1>Update Page</h1>
+ <h1>Update Page</h1>
     <ul class="list-group" id="myList">
       <form method="post">
         {% csrf_token %}
@@ -36,4 +55,4 @@
   </script>
 </body>
 
-</html>
+{% endblock %}
