@@ -1,0 +1,35 @@
+
+
+body{
+    display: grid;
+    height: 100vh;
+    place-items: center;
+    background: linear-gradient(to right, #f8f8ff 0%, #000000 100%);
+}
+
+.delete form input{
+    font-family: Times New Roman;
+    color: rgb(37, 36, 36);
+    
+    background:  #fff;
+    max-width: 100px;
+    width: 100%;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+
+  
+  .delete{
+    background:  #fff;
+    max-width: 400px;
+    width: 100%;
+    padding: 35px 40px;
+    border-radius: 5px;
+  
+  }
+  
+  .delete form p{
+    font-size: 20px;
+    font-weight: 400;
+    margin: 20px 0 10px 0;
+  }
