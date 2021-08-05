@@ -14,6 +14,8 @@
 </head>
 
 <body>
+
+
     {% if form.errors %}
     <p> There's something wrong with what you entered!</p>
     {% endif %}
@@ -23,7 +25,6 @@
     {% endif %}
 
     <div class="container">
-
         <form method="POST" action="{% url 'login' %}">
             {% csrf_token %}
             <div class="title">Login</div>
@@ -41,11 +42,18 @@
                 <p><input type="submit" value="Login"></p>
                 <input type="hidden" name="next" value=" {{ next }}">
             </div>
+
+            <div class="Sign-In">
+            
+                    <a href="{% url 'register' %}">Sign In</a>
+                </div>
+        </div>
+
         </form>
     </div>
 
 
 
-</body>
+    </body>
 
-</html>
+    </html>

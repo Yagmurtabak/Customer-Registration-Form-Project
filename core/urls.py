@@ -8,7 +8,8 @@ from core.views import (
     CustomerDeleteView, 
     CustomerUpdateView, 
     RegisterView,
-    register)
+    RegisterationView
+    )
 
 
 urlpatterns = [
@@ -18,7 +19,7 @@ urlpatterns = [
     path('delete/<int:pk>/', CustomerDeleteView.as_view(), name = "delete"),
     path('create', CustomerCreateView.as_view(), name = "create"),
     path('registerate', RegisterView.as_view(), name = "registerate"),
-    path('register/', register, name = "register"),
+    path('register/', RegisterationView.as_view(), name = "register"),
     path('login/', LoginView.as_view()),
     path('logout/',LogoutView.as_view(), name = "logout"),
 ]

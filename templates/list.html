@@ -25,6 +25,7 @@ HomePage
     <div class="header">
         <div class="left-header">
             <ul>
+        {% if user.is_authenticated %}
 
                 <li class="#"><a href="/"><i class="fa fa-home" aria-hidden="true"></i>Home Page</a></a></li>
                 <li class="#"><a href="core/create"><i class="fa fa-user" aria-hidden="true"></i>Add New
@@ -32,6 +33,11 @@ HomePage
                 <li class="#"><a href="{% url 'logout' %}"><i class=" fas fa-sign-out-alt"
                             aria-hidden="true"></i>Logout</a></a></li>
 
+        {% else %}
+                <li><a href="{% url 'login' %}"><i class="fas fa-sign-in-alt "  aria-hidden="true"></i>Login</a></li>
+                <li><a href="{% url 'register' %}"><i class="fas fa-sign-in-alt " aria-hidden="true"></i>Sign In</a></li>
+        {% endif %}
+        
 
             </ul>
         </div>
@@ -58,6 +64,7 @@ HomePage
             </thead>
             <tbody>
 
+ 
 
                 {% for Customer in allcustomers %}
                 <tr>
@@ -76,6 +83,9 @@ HomePage
         </table>
     </div>
     <hr>
+
+
+
 
     <script>
         $(document).ready(function () {

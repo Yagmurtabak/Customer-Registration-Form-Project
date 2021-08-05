@@ -24,8 +24,10 @@ class CustomerListView(ListView):
             Q(tc__icontains=word)|
             Q(city__icontains=word)|
             Q(district__icontains=word)|
-            Q(telephone__icontains=word))
+            Q(telephone__icontains=word)).order_by('-date')
         return Customer.objects.all().order_by('-date')
+            
+
 
 
 class CustomerDetailView(DetailView):
@@ -76,16 +78,19 @@ class CustomerUpdateView(UpdateView):
         return super(CustomerUpdateView,self).form_valid(form)
 
 
-def register(request):
+class RegisterationView(FormView):
+    template_name = 'registration/register.html'
 
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST or None)
+    form_class = UserCreationForm
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
         if form.is_valid():
             form.save()
             return redirect('login')
+    
         else:
-            return render(request, 'registration/register.html' , {'form': form})
-    else:
-        form = UserCreationForm()
-        return render(request, 'registration/register.html' , {'form': form}) 
+            return render(request, "registration/register.html",{"form":form})
+
+    
 
