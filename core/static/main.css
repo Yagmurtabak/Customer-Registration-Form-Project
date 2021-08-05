@@ -2,6 +2,7 @@
 
   font-family: Times New Roman;
   color: rgb(37, 36, 36);
+
 }
 
 .mid-header {
@@ -10,6 +11,13 @@
   color: rgb(0, 0, 0);
   font-size: 20px;
 
+}
+
+.mid-header [type='submit']{
+  height: 35px;
+  background-color: rgba(34, 32, 32, 0.966);
+  border-radius: 10px;
+  color: rgb(248, 248, 248);
 }
 
 .left-header {
@@ -31,6 +39,7 @@
 .left-header ul li a {
   text-decoration: none;
   color: white;
+  font-size: 16px;
 
 }
 
@@ -57,11 +66,51 @@
 
 .pagination ul li a {
   color: black;
+  text-align: center;
+}
+
+
+.content-table  {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
 
 }
 
-.pagination .navigation {
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+.content-table h1{
+  font-family: Times New Roman;
+  font-size: 40px;
+}
+
+
+.content-table thead tr{
+  background-color: rgb(34, 32, 32);
+  color: bisque;
+  font-family: Times New Roman;
+  font-size: 15px;
+  
+}
+
+.content-table .table tr td{
+  padding: 5px 10px;
+  font-family: Times New Roman;
+  
+}
+
+.content-table tbody tr:nth-of-type(even){
+  background-color: rgba(184, 181, 187, 0.24);
+}
+
+.content-table tbody tr:last-of-type{
+  border-bottom: 1px solid black;
+}
+
+.authorized li{
+
+  display: block;
+  width: 100%;
+  height: 44px;
+  border-radius: 20px;
+  font-size: 20px;
 }
