@@ -1,4 +1,4 @@
-.header{
+.header {
 
   font-family: Times New Roman;
   color: rgb(37, 36, 36);
@@ -13,49 +13,56 @@
 }
 
 .left-header {
-  
+
   padding: 15px;
-  background :rgb(34, 32, 32);
-  
-  
+  background: rgb(34, 32, 32);
+
+
 }
 
-.left-header li{
+.left-header li {
   display: inline;
   width: 150px;
   margin: 15px;
   padding: 10px;
-  
+
 }
 
-.left-header ul li a{
+.left-header ul li a {
   text-decoration: none;
-  color:white;
+  color: white;
 
 }
+
 .container {
   font-family: Times New Roman;
   color: rgb(37, 36, 36);
-  
+
 }
 
-.active, .left-header ul li:hover{
+.active,
+.left-header ul li:hover {
   background: rgb(131, 130, 130);
   border-radius: 20px;
 }
 
-.left-header .fa{
+.left-header .fa {
   margin-right: 8px;
 }
 
-.navigation a{
+.navigation a {
   font-family: Times New Roman;
   color: rgb(37, 36, 36);
 }
 
-.pagination ul li a{
+.pagination ul li a {
   color: black;
+
 }
 
+.pagination .navigation {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 
-
+}

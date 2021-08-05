@@ -1,13 +1,13 @@
 from django.contrib import admin
-from .models import NewCustomer
+from .models import Customer
 
 # Register your models here.
 
-class adminYazı(admin.ModelAdmin):
+class admincustomer(admin.ModelAdmin):
     list_display = ["name", "surname", "date"]
     list_filter = ["date"]
     search_fields = ["name", "surname"]
     class Meta:
-        model = NewCustomer
+        model = Customer
 
-admin.site.register(NewCustomer,adminYazı)
+admin.site.register(Customer,admincustomer)

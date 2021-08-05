@@ -28,7 +28,8 @@ Customer Detail Page
 
         <li class="#"><a href="/"><i class="fa fa-home" aria-hidden="true"></i>Home Page</a></a></li>
         <li class="#"><a href="/create"><i class="fa fa-user" aria-hidden="true"></i>Add New Customer</a></a></li>
-        <li class="#"><a href="{% url 'logout' %}"><i class=" fas fa-sign-out-alt" aria-hidden="true"></i>Logout</a></a></li>
+        <li class="#"><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt" aria-hidden="true"></i>Logout</a></a>
+        </li>
       </ul>
     </div>
 
@@ -36,22 +37,22 @@ Customer Detail Page
       <h1>Customer Detail</h1>
       <ul class="list-group" id="myList">
 
-        <li class="list-group-item">Name:<h1><small><small>{{ NewCustomer.name }}</small></small></h1>
+        <li class="list-group-item">Name :<h1><small><small>{{ Customer.name }}</small></small></h1>
         </li>
 
-        <li class="list-group-item">Surname:<h2><small>{{ NewCustomer.surname }}</small></h2>
+        <li class="list-group-item">Surname :<h2><small>{{ Customer.surname }}</small></h2>
         </li>
 
-        <li class="list-group-item">TC:<h3><small>{{ NewCustomer.tc }}<small></h3>
+        <li class="list-group-item">TC :<h3><small>{{ Customer.tc }}<small></h3>
         </li>
 
-        <li class="list-group-item">City:<h4>{{ NewCustomer.city }}</h4>
+        <li class="list-group-item">City :<h4>{{ Customer.city }}</h4>
         </li>
 
-        <li class="list-group-item">District:<h5>{{ NewCustomer.district }}</h5>
+        <li class="list-group-item">District :<h5>{{ Customer.district }}</h5>
         </li>
 
-        <li class="list-group-item">Telephone:<h6>{{ NewCustomer.telephone }}</h6>
+        <li class="list-group-item">Telephone :<h6>{{ Customer.telephone }}</h6>
         </li>
       </ul>
     </div>
@@ -70,12 +71,10 @@ Customer Detail Page
 
 
     <div class="container">
-      <a href="/core/update/{{ NewCustomer.id}}"><button type="button" class="btn btn-secondary">Update</button>
-      <a href="/core/delete/{{ NewCustomer.id}}"><button type="button" class="btn btn-secondary">Delete</button>
+      <a href = "/core/update/{{ Customer.id}}"><button type = "button" class = "btn btn-secondary">Update</button>
+      <a href = "/core/delete/{{ Customer.id}}"><button type = "button" class = "btn btn-secondary">Delete</button>
     </div>
     <br><br>
-
-
 
 </body>
 

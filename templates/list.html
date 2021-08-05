@@ -59,16 +59,16 @@ HomePage
             <tbody>
 
 
-                {% for NewCustomer in allcustomers %}
+                {% for Customer in allcustomers %}
                 <tr>
                     <td>
-                        <h2><a href="detail/{{ NewCustomer.id }}" style="color:black">{{ NewCustomer.name }}</a></h2>
+                        <h2><a href="detail/{{ Customer.id }}" style="color:black">{{ Customer.name }}</a></h2>
                     </td>
                     <td>
-                        <h3>{{ NewCustomer.surname }}</h3>
+                        <h3>{{ Customer.surname }}</h3>
                     </td>
                     <td>
-                        <h6>{{ NewCustomer.date }}</h6>
+                        <h6>{{ Customer.date }}</h6>
                     </td>
                 </tr>
                 {% endfor %}
