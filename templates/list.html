@@ -58,6 +58,7 @@ HomePage
         <table class="table ">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Name</th>
                     <th>Surname</th>
                     <th>Date</th>
@@ -70,13 +71,16 @@ HomePage
                 {% for Customer in allcustomers %}
                 <tr>
                     <td>
-                        <h2><a href="detail/{{ Customer.id }}" style="color:black">{{ Customer.name }}</a></h2>
+                        <h3><a href="detail/{{ Customer.id }}" style="color:black">{{ Customer.id }}</a></h3>
                     </td>
                     <td>
-                        <h3>{{ Customer.surname }}</h3>
+                        <h3><a href="detail/{{ Customer.id }}" style="color:black">{{ Customer.name }}</a></h3>
                     </td>
                     <td>
-                        <h6>{{ Customer.date }}</h6>
+                        <h3><a href="detail/{{ Customer.id }}" style="color:black">{{ Customer.surname }}</a></h3>
+                    </td>
+                    <td>
+                        <h5>{{ Customer.date }}</h5>
                     </td>
                 </tr>
                 {% endfor %}
