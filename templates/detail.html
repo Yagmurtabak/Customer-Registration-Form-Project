@@ -42,22 +42,22 @@ Customer Detail Page
       <ul class="list-group" id="myList">
       {% if user.is_authenticated %}
 
-        <li class="list-group-item">Name :<h1><small><small>{{ Customer.name }}</small></small></h1>
+        <li class="list-group-item">Name :<h3>{{ Customer.name }}</h3>
         </li>
 
-        <li class="list-group-item">Surname :<h2><small>{{ Customer.surname }}</small></h2>
+        <li class="list-group-item">Surname :<h3>{{ Customer.surname }}</h3>
         </li>
 
-        <li class="list-group-item">TC :<h3><small>{{ Customer.tc }}<small></h3>
+        <li class="list-group-item">TC :<h3>{{ Customer.tc }}</h3>
         </li>
 
-        <li class="list-group-item">City :<h4>{{ Customer.city }}</h4>
+        <li class="list-group-item">City :<h3>{{ Customer.city }}</h3>
         </li>
 
-        <li class="list-group-item">District :<h5>{{ Customer.district }}</h5>
+        <li class="list-group-item">District :<h3>{{ Customer.district }}</h3>
         </li>
 
-        <li class="list-group-item">Telephone :<h6>{{ Customer.telephone }}</h6>
+        <li class="list-group-item">Telephone :<h3>{{ Customer.telephone }}</h3>
         </li>
 
         <div class="container">
