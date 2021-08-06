@@ -7,7 +7,7 @@ from core.views import (
     CustomerDetailView, 
     CustomerDeleteView, 
     CustomerUpdateView, 
-    RegisterView,
+    CustomerView,
     RegisterationView
     )
 
@@ -18,7 +18,7 @@ urlpatterns = [
     path('update/<int:pk>/', CustomerUpdateView.as_view(), name = "update"),
     path('delete/<int:pk>/', CustomerDeleteView.as_view(), name = "delete"),
     path('create', CustomerCreateView.as_view(), name = "create"),
-    path('registerate', RegisterView.as_view(), name = "registerate"),
+    path('customer', CustomerView.as_view(), name = "customer"),
     path('register/', RegisterationView.as_view(), name = "register"),
     path('login/', LoginView.as_view()),
     path('logout/',LogoutView.as_view(), name = "logout"),

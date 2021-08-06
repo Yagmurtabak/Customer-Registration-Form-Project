@@ -22,25 +22,26 @@ Customer Detail Page
 <body>
 
 
-   <div class="header">
+  <div class="header">
     <div class="left-header">
       <ul>
-       {% if user.is_authenticated %}
+        {% if user.is_authenticated %}
 
-          <li class="#"><a href="/"><i class="fa fa-home" aria-hidden="true"></i>Home Page</a></a></li>
-          <li class="#"><a href="/create"><i class="fa fa-user" aria-hidden="true"></i>Add New Customer</a></a></li>
-          <li class="#"><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt" aria-hidden="true"></i>Logout</a></a></li>
+        <li class="#"><a href="/"><i class="fa fa-home" aria-hidden="true"></i>Home Page</a></a></li>
+        <li class="#"><a href="/create"><i class="fa fa-user" aria-hidden="true"></i>Add New Customer</a></a></li>
+        <li class="#"><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt" aria-hidden="true"></i>Logout</a></a>
+        </li>
         {% else %}
-            <li><a href="{% url 'login' %}"><i class="fas fa-sign-in-alt "  aria-hidden="true"></i>Login</a></li>
-            <li><a href="{% url 'register' %}"><i class="fas fa-sign-in-alt " aria-hidden="true"></i>Sign Up</a></li>
-       {% endif %}
-       
+        <li><a href="{% url 'login' %}"><i class="fas fa-sign-in-alt " aria-hidden="true"></i>Login</a></li>
+        <li><a href="{% url 'register' %}"><i class="fas fa-sign-in-alt " aria-hidden="true"></i>Sign Up</a></li>
+        {% endif %}
+
       </ul>
     </div>
     <div class="container">
       <h1>Customer Detail</h1>
       <ul class="list-group" id="myList">
-      {% if user.is_authenticated %}
+        {% if user.is_authenticated %}
 
         <li class="list-group-item">Name :<h3>{{ Customer.name }}</h3>
         </li>
@@ -61,20 +62,20 @@ Customer Detail Page
         </li>
 
         <div class="container">
-      <a href = "/core/update/{{ Customer.id}}"><button type = "button" class = "btn btn-secondary">Update</button>
-      <a href = "/core/delete/{{ Customer.id}}"><button type = "button" class = "btn btn-secondary">Delete</button>
-    </div>
+          <a href="/core/update/{{ Customer.id}}"><button type="button" class="btn btn-secondary">Update</button>
+            <a href="/core/delete/{{ Customer.id}}"><button type="button" class="btn btn-secondary">Delete</button>
+        </div>
 
-      {% else %}
-      <div class=authorized>
-                <li>You do not have the  authorized, please login and try again!</li>
-      </div>
-      {% endif %}
+        {% else %}
+        <div class=authorized>
+          <li>You do not have the authorized, please login and try again!</li>
+        </div>
+        {% endif %}
       </ul>
     </div>
     <br>
 
-    
+
     <br><br>
 
 </body>

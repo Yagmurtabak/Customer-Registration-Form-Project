@@ -45,14 +45,8 @@ class CustomerCreateView(CreateView):
         form.instance.user = self.request.user
         return super(CustomerCreateView,self).form_valid(form)
 
- 
-class CustomerDeleteView(DeleteView):
-    model = Customer
-    template_name = 'delete.html'
-    success_url = "/"
 
-
-class RegisterView(FormView):
+class CustomerView(FormView):
     template_name = 'sent.html'
     form_class = CustomerForm
 
@@ -64,6 +58,12 @@ class RegisterView(FormView):
             return render(request, "create.html",{"form":form})
 
         return render(request, self.template_name, {'form': form})
+
+ 
+class CustomerDeleteView(DeleteView):
+    model = Customer
+    template_name = 'delete.html'
+    success_url = "/"
 
 
 class CustomerUpdateView(UpdateView):

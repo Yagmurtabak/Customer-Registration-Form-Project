@@ -36,24 +36,13 @@ Add New Customer
       <h1>New Customer</h1>
 
       <ul class="list-group" id="myList">
-        <form action="registerate" method="POST"> {%csrf_token %}
+        <form action="customer" method="POST"> {%csrf_token %}
 
           <li class="list-group-item">{{ form.as_p }}</li>
-          <input type="submit" value="Submit" button type="button" class="btn btn-secondary">
+          <input type="submit" value="Submit" class="btn btn-secondary">
 
       </ul>
     </div>
-
-    <script>
-      $(document).ready(function () {
-        $("#myInput").on("keyup", function () {
-          var value = $(this).val().toLowerCase();
-          $("#myList li").filter(function () {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-          });
-        });
-      });
-    </script>
 
 
     {% for field in form %}
