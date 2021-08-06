@@ -46,7 +46,7 @@ HomePage
         <div class="mid-header">
             <form method='GET'>
                 <input type='text' name='word' value='{{ request.GET.word }}'>
-                <input class="button" type='submit' value='Search' class="btn">
+                <input class="button" type='submit' value='Search'>
             </form>
 
         </div>
@@ -84,21 +84,6 @@ HomePage
         </table>
     </div>
     <hr>
-
-
-
-
-    <script>
-        $(document).ready(function () {
-            $("#myInput").on("keyup", function () {
-                var value = $(this).val().toLowerCase();
-                $("#myList li").filter(function () {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        });
-    </script>
-
 
 
     <div class="pagination">
