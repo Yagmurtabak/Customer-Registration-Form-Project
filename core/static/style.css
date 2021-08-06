@@ -78,7 +78,7 @@ body {
 }
 
 
-.container .Sign-In a{
+.container .Sign-Up a{
     padding: 15px 30px;
     text-decoration: none;
     color: black;
@@ -89,7 +89,7 @@ body {
 }
 
 
-.container .Sign-In{
+.container .Sign-Up{
     margin-top: 50px;
     text-align: center;
     display: block;

@@ -13,7 +13,7 @@
 
 }
 
-.mid-header [type='submit']{
+.mid-header [type='submit'] {
   height: 35px;
   background-color: rgba(34, 32, 32, 0.966);
   border-radius: 10px;
@@ -70,7 +70,7 @@
 }
 
 
-.content-table  {
+.content-table {
   border-collapse: collapse;
   margin: 25px 0;
   font-size: 0.9em;
@@ -78,35 +78,35 @@
 
 }
 
-.content-table h1{
+.content-table h1 {
   font-family: Times New Roman;
   font-size: 40px;
 }
 
 
-.content-table thead tr{
+.content-table thead tr {
   background-color: rgb(34, 32, 32);
   color: bisque;
   font-family: Times New Roman;
   font-size: 15px;
-  
+
 }
 
-.content-table .table tr td{
+.content-table .table tr td {
   padding: 5px 10px;
   font-family: Times New Roman;
-  
+
 }
 
-.content-table tbody tr:nth-of-type(even){
+.content-table tbody tr:nth-of-type(even) {
   background-color: rgba(184, 181, 187, 0.24);
 }
 
-.content-table tbody tr:last-of-type{
+.content-table tbody tr:last-of-type {
   border-bottom: 1px solid black;
 }
 
-.authorized li{
+.authorized li {
 
   display: block;
   width: 100%;
