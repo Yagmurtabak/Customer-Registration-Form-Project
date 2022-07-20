@@ -2,7 +2,7 @@
 
 ### About The Project :
 
-In this project, we created a customer registration form using django framework. This registration form gives name, surname, tc, city and district information from the user and saves them information to the system, and then allows us to update this information or delete the registered customer also in the homepage we can see the customer list.
+In this project, ı created a customer registration form using django framework. This registration form gives name, surname, tc, city and district information from the user and saves them information to the system, and then allows us to update this information or delete the registered customer also in the homepage we can see the customer list.
 
 ### Built With :
 
